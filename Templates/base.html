@@ -1,0 +1,79 @@
+<style>
+.block_demo{
+    border: 2px;
+    width:20%;
+    display:inline-block;
+    }
+.this{
+    border: 2px;
+    width: 20%;
+    height: 30%;
+}
+.task2{
+    margin-left: auto;
+
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+</head>
+
+<body>
+    <div style="margin-top: 50px;" class="ui container">
+        <h1 class="ui center aligned header"> To Do App</h1>
+        <form class="ui form"  method="post">
+            
+            <div class="field">
+                <label>Add task</label>
+                <input type="text" name="Add_task" placeholder="Enter task..."><br>
+            </div>
+            
+            <button class="ui blue button" type="submit">Add</button>
+            <h4> list of tasks</h4>
+            <ul>
+                {%for task in add_list%}
+                <select style="width: 20%; height: 5%;" class="this" name="task1" id="task1" multiple>
+                    <option value="{{task}}">{{task}}</option>
+                </select>
+              
+                {%endfor%}
+   
+                <input class="ui blue button" name="submit" type="submit" value="Mark as Completed" >
+                <input class="ui red button" name="delete" type="submit" value="Delete">
+            </ul>
+        </form>
+        <div class="block_demo">
+            <h4> completed task </h4>
+            {%if completed_task|length>=1%}
+                {%for task in completed_task%}
+                <ul>
+                    <li>{{task}}</li>
+                </ul>
+                
+            {%endfor%}
+            {%endif%}
+          
+
+        </div>
+        <div class="block_demo">
+            <h4> Pending task </h4>
+            <ul>
+                {%for task in pending%}
+                <li>{{task}}</li>
+                {%endfor%}
+            </ul>
+            
+      
+    
+    </div>
+    
+</body>
+</html>
